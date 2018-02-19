@@ -56,9 +56,9 @@ let handleWeatherResponse = function(response) {
       html = html + '<h5>' + day.summary + '</h5>';
       html = html + '</div>';
       $(".forecast").append(html);
+      $(".current").fadeIn(1000);
+      $(".forecast").fadeIn(2000);
     }
-    $(".current").fadeIn();
-    $(".forecast").fadeIn();
 
 
   // *** your code ends here -- really.
