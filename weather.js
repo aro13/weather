@@ -44,23 +44,21 @@ let handleWeatherResponse = function(response) {
   window.response = response
 
   // **** your code starts here - don't modify anything else. you will be sad.
-  $(function() {
     $("#current-conditions-icon").html(icon(response.currently.icon));
     $("#current-conditions-text").html(response.currently.summary);
-    $(".row forecast").empty();
-    for (let i=0; i<response.daily.data.length; i++) {
+    $(".forecast").empty();
+    for (let i=0; i<6; i++) {
       let day = response.daily.data[i];
       console.log(day.icon);
       let html = '<div class="col">';
-      html = html + '<h3><i class="fas fa-sun"></i></h3>';
-      html = html + '<h4>89|55</h4>';
-      html = html + '<h5>Clear throughout the day.</h5>';
+      html = html + '<h3>' + icon(day.icon) + '</h3>';
+      html = html + '<h4>' + Math.round(day.temperatureHigh)+ '|' + Math.round(day.temperatureLow) + '</h4>';
+      html = html + '<h5>' + day.summary + '</h5>';
       html = html + '</div>';
-      $(".row forecast").append(html);
+      $(".forecast").append(html);
     }
-    $(".row forecast").fadeIn();
-  });
-
+    $(".current").fadeIn();
+    $(".forecast").fadeIn();
 
 
   // *** your code ends here -- really.
